@@ -10,8 +10,8 @@ VERSION ?= latest
 FILE = Dockerfile
 CONTEXT = .
 
-REPO = docker-base-debian
-NAME = docker-base-debian
+REPO = debian-base
+NAME = debian-base
 INSTANCE = default
 
 .PHONY: build shell release versions start stop rm
