@@ -17,7 +17,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && apt-get autoremove -y --purge \
     && apt-get autoclean \
     && apt-get clean \
-    && rm -rf /var/lib/apt
+    && rm -rf /var/lib/apt/lists/*
 
 ADD rootfs/ /
 
