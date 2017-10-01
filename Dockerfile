@@ -1,4 +1,4 @@
-FROM debian:8.6
+FROM debian:stretch
 
 MAINTAINER Thomas Juhnke <dev@van-tomas.de>
 
@@ -19,7 +19,5 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt
 
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod a+x /usr/local/bin/entrypoint.sh
+ADD rootfs/ /
 
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
