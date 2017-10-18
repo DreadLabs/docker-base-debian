@@ -16,6 +16,16 @@ echo "==> Starting with UID : $USER_ID"
 userdel ${SUEXEC_USER} 2>/dev/null
 useradd --shell /bin/false --no-create-home --uid $USER_ID ${SUEXEC_USER}
 
+# Create a named pipe and redirect anything that comes to it
+# to stderr connected to Docker.
+#
+# @see https://github.com/moby/moby/issues/6880#issuecomment-220637337
+# @see https://redmine.lighttpd.net/issues/2731#note-15
+#
+mkfifo --mode 600 /tmp/logpipe
+chown "$SUEXEC_USER" /tmp/logpipe
+cat <> /tmp/logpipe 1>&2 &
+
 # Provide API for entrypoint users
 for f in /etc/entrypoint-suexec.d/*; do
     case "$f" in
@@ -26,4 +36,3 @@ for f in /etc/entrypoint-suexec.d/*; do
 done
 
 exec /usr/local/bin/su-exec ${SUEXEC_USER} "$@"
-
