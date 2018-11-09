@@ -14,15 +14,21 @@ You can configure this image with the following environment variables
 
 ## Makefile
 
-Tested with GNU Make 3.81. `VERSION` environment variable defaults to `latest`.
+Tested with GNU Make 3.81.
+
+### List available versions to build
+
+    > make versions-avail
+    < 8-jessie/
+    < 9-stretch/
 
 ### Build
 
-    make build [-e VERSION=x.y]
+    make build -e VERSION=n-...
 
 ### Release
 
-    make release [-e VERSION=x.y]
+    make release -e VERSION=n-...
 
 ## License
 

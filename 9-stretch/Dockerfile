@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:9
 
 MAINTAINER Thomas Juhnke <dev@van-tomas.de>
 
@@ -20,4 +20,3 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 ADD rootfs/ /
-
