@@ -45,6 +45,6 @@ versions:
 	docker images | grep $(NS)/$(REPO)
 
 versions-avail:
-	@ls -d */
+	@ls -d1 */
 
 default: build
